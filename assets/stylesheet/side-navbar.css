@@ -17,6 +17,10 @@
   color: gray;
 }
 
+#side-navbar ul {
+  list-style-type: none;
+}
+
 #content {
-    display: flex;
+  display: flex;
 }
