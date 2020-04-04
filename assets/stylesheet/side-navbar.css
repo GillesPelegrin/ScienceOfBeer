@@ -21,6 +21,27 @@
   list-style-type: none;
 }
 
+
+
+
+
+
+
 #content {
   display: flex;
+  background: #f9f9f9;
+}
+
+.card {
+  margin-bottom: 15px;
+  border-radius: 0;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-text {
+    padding-bottom: 1rem;
+}
+
+.card .card-header {
+    background-color: lightsteelblue;
 }
