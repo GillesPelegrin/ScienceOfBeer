@@ -6,7 +6,7 @@
                 <label class="input-group-text" for="inputGroupSelect01">Filter</label>
             </div>
             <select class="custom-select" id="filter-select">
-                <option selected>Niets geselecteerd</option>
+                <option value="nothing" selected>Niets geselecteerd</option>
                 <option value="foam">Schuim</option>
                 <option value="color">Kleur / EBC</option>
                 <option value="ibu">IBU</option>
@@ -20,16 +20,57 @@
 
     $(function () {
         $("#filter-select").change(function () {
-            console.log($(this).children("option:selected").val())
-
-            // how to get the value of the selected item if you need it
-            const elems = document.getElementsByClassName('color');
-            for (var i = 0; i < elems.length; i++) {
-                elems[i].style.display = "none";
+            if ($(this).children("option:selected").val() === "nothing") {
+                return filterArg.forEach(filterCriterea => addElementsWithClass(filterCriterea))
             }
+
+            filterArg.forEach(filterCriterea => {
+                if (filterCriterea == $(this).children("option:selected").val()) {
+                    addElementsWithClass(filterCriterea)
+                } else {
+                    removeElementsWithClass(filterCriterea)
+                }
+            })
+
+            // const card = $('.card')
+
+            // for (i = 0; i < card.length; i++) {
+            // console.log(card[i].childNodes.childNodes)
+            // }
+
+
+            // const cards = document.getElementsByClassName("card")
+
+            $(".card").has(".card-text").has(".dissapear").addClass("dissapear")
+            $(".card").has(".card-text").not(":has(.dissapear)").removeClass("dissapear")
+        //    $(".card").not(":has(.card-text)").addClass("dissapear")
+        //    $(".card::has(.card-text)").removeClass("dissapear")
+
+
+            // Array.from(document.getElementsByClassName("card"))
+            // .forEach(card => {
+
+            // console.log(typeof card)
+            // if(card.find('p.filled-text').length !== 0) {
+            // console.log('hello')
+            // }
+
+            // });
+
+
 
         });
     });
+
+    function removeElementsWithClass(style) {
+        $("div." + style).addClass("dissapear")
+    }
+
+    function addElementsWithClass(style) {
+        $("div." + style).removeClass("dissapear")
+    }
+
+
 
 
 </script>
